@@ -170,6 +170,9 @@ class YoloObjectDetector {
   image** demoAlphabet_;
   int demoClasses_;
 
+  // header for the latest detection
+  std_msgs::Header detectionHeader_;
+
   network* net_;
   std_msgs::Header headerBuff_[3];
   image buff_[3];
