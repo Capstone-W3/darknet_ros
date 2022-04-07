@@ -313,7 +313,7 @@ void* YoloObjectDetector::detectInThread() {
     printf("Objects:\n\n");
   }
   image display = buff_[(buffIndex_ + 2) % 3];
-  auto head = headerBuff_[(buffIndex_ + 2) % 3];
+  // auto head = headerBuff_[(buffIndex_ + 2) % 3]; // TRASH
   // draw_detections(display, dets, nboxes, demoThresh_, demoNames_, demoAlphabet_, demoClasses_, 1);
   draw_detections_v3(display, dets, nboxes, demoThresh_, demoNames_, demoAlphabet_, demoClasses_, 1);
 
@@ -361,7 +361,7 @@ void* YoloObjectDetector::detectInThread() {
     roiBoxes_[0].num = 0;
   } else {
     roiBoxes_[0].num = count;
-    detectionHeader_ = head;
+    // detectionHeader_ = head; // TRASH
   }
 
   free_detections(dets, nboxes);
@@ -579,8 +579,8 @@ void* YoloObjectDetector::publishInThread() {
         }
       }
     }
-    //boundingBoxesResults_.header.stamp = ros::Time::now();
-    boundingBoxesResults_.header.stamp = detectionHeader_.stamp;
+    boundingBoxesResults_.header.stamp = ros::Time::now();
+    // boundingBoxesResults_.header.stamp = detectionHeader_.stamp; // TRASH
     boundingBoxesResults_.header.frame_id = "detection";
     boundingBoxesResults_.image_header = headerBuff_[(buffIndex_ + 1) % 3];
     boundingBoxesPublisher_.publish(boundingBoxesResults_);

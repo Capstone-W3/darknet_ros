@@ -171,7 +171,7 @@ class YoloObjectDetector {
   int demoClasses_;
 
   // header for the latest detection
-  std_msgs::Header detectionHeader_;
+  // std_msgs::Header detectionHeader_; // TRASH
 
   network* net_;
   std_msgs::Header headerBuff_[3];
